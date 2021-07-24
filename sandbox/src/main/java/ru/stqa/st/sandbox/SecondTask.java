@@ -5,6 +5,6 @@ public class SecondTask {
         Point p1 = new Point(4,9);
         Point p2 = new Point(7,3);
 
-        System.out.println("Расстояние между двумя точками = " + p1.distance(p1,p2));
+        System.out.println("Расстояние между двумя точками = " + p1.distance(p2));
     }
 }
