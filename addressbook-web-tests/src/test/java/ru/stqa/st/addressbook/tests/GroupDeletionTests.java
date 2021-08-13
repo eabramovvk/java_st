@@ -1,6 +1,7 @@
 package ru.stqa.st.addressbook.tests;
 
 import org.testng.annotations.Test;
+import ru.stqa.st.addressbook.model.GroupData;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -9,6 +10,9 @@ public class GroupDeletionTests extends TestBase {
   public void testGroupDeletion() throws Exception {
 
     app.getNavigationHelper().goToGroupPage();
+    if (! app.getGroupHelper().isThereAGroup()){
+      app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+    }
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
