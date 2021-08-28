@@ -48,7 +48,7 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home"));
     }
     public void selectContactById(int id) {
-        wd.findElement(By.xpath("//img[@alt='Edit']")).click();
+        wd.findElement((By.cssSelector("a[href*='edit.php?id=" + id + "']"))).click();
     }
 
     public void deleteSelectedContacts() {
