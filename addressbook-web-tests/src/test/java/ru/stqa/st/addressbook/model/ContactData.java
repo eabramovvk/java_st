@@ -1,7 +1,5 @@
 package ru.stqa.st.addressbook.model;
 
-import java.util.Objects;
-
 public class ContactData {
     public void setId(int id) {
         this.id = id;
@@ -10,8 +8,21 @@ public class ContactData {
     private String firstname;
     private String lastname;
     private String address;
-    private String homephone;
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
     private String email;
+
+    public String getAllPhones() {
+        return allPhones;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
+        return this;
+    }
+
+    private String allPhones;
 
     @Override
     public boolean equals(Object o) {
@@ -59,8 +70,8 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withHomePhone (String homephone){
-        this.homephone = homephone;
+    public ContactData withHomePhone (String homePhone){
+        this.homePhone = homePhone;
         return this;
     }
 
@@ -71,6 +82,19 @@ public class ContactData {
 
     public ContactData withGroup (String group){
         this.group = group;
+        return this;
+    }
+    public String getMobilePhone() {return mobilePhone;  }
+
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
+    }
+
+    public String getWorkPhone() {return workPhone;  }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
         return this;
     }
 
@@ -86,8 +110,8 @@ public class ContactData {
         return address;
     }
 
-    public String getHomephone() {
-        return homephone;
+    public String getHomePhone() {
+        return homePhone;
     }
 
     public String getEmail() {
