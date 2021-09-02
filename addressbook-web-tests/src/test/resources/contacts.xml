@@ -1,0 +1,62 @@
+<list>
+  <contact>
+    <firstname>TestFamily 0</firstname>
+    <lastname>Test 0</lastname>
+    <address>TestCity 0</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 1</firstname>
+    <lastname>Test 1</lastname>
+    <address>TestCity 1</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 2</firstname>
+    <lastname>Test 2</lastname>
+    <address>TestCity 2</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 3</firstname>
+    <lastname>Test 3</lastname>
+    <address>TestCity 3</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 4</firstname>
+    <lastname>Test 4</lastname>
+    <address>TestCity 4</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 5</firstname>
+    <lastname>Test 5</lastname>
+    <address>TestCity 5</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 6</firstname>
+    <lastname>Test 6</lastname>
+    <address>TestCity 6</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 7</firstname>
+    <lastname>Test 7</lastname>
+    <address>TestCity 7</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 8</firstname>
+    <lastname>Test 8</lastname>
+    <address>TestCity 8</address>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <firstname>TestFamily 9</firstname>
+    <lastname>Test 9</lastname>
+    <address>TestCity 9</address>
+    <email>test@test.ru</email>
+  </contact>
+</list>
