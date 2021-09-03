@@ -4,16 +4,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.st.addressbook.model.ContactData;
 import ru.stqa.st.addressbook.model.Contacts;
+
+import java.util.Properties;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactDeletionTests extends TestBase{
 
+    private Properties properties;
+
     @BeforeMethod
     public void ensurePreconditions(){
         if (app.contact().all().size() == 0){
             app.goTo().goToContactCreation();
-            app.contact().create(new ContactData().withFirstName("TestName").withLastName("TestLastName").withAddress("TestAddress").withHomePhone("+79217777777").withEmail("testmail@test.test").withGroup("[none]"), true);
+            app.contact().create(new ContactData().withFirstName(properties.getProperty("web.firstName")).withLastName(properties.getProperty("web.lastName")).withAddress(properties.getProperty("web.address")).withHomePhone(properties.getProperty("web.homephone")).withEmail(properties.getProperty("web.email")).withGroup(properties.getProperty("web.group")), true);
             app.contact().goToHomePage();
         }
 
