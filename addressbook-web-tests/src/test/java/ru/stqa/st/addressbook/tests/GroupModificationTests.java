@@ -5,6 +5,10 @@ import org.testng.annotations.Test;
 import ru.stqa.st.addressbook.model.GroupData;
 import ru.stqa.st.addressbook.model.Groups;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Properties;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -23,8 +27,9 @@ public class GroupModificationTests extends TestBase{
 
     @Test
 
-    public void testGroupModification(){
-
+    public void testGroupModification() throws IOException {
+        properties = new Properties();
+        properties.load(new FileReader(new File(String.format("src/test/resources/local.properties"))));
         Groups before = app.group().all();
         GroupData modifiedGroup = before.iterator().next();
         GroupData group = new GroupData()

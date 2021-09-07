@@ -23,7 +23,7 @@ public class GroupCreationTests extends TestBase {
 
     @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
-    try (BufferedReader reader = new BufferedReader( new FileReader(new File("scr/tests/resources/groups.xml")))){
+    try (BufferedReader reader = new BufferedReader( new FileReader(new File("src/test/resources/groups.xml")))){
         String xml = "";
         String line = reader.readLine();
         while (line != null){
@@ -39,7 +39,7 @@ public class GroupCreationTests extends TestBase {
   }
 
   @Test(dataProvider = "validGroups")
-  public void testGroupCreation(GroupData group) {
+  public void testGroupCreation(GroupData group) throws Exception {
       app.goTo().groupPage();
       Groups before = app.group().all();
       app.group().create(group);

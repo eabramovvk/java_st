@@ -41,7 +41,6 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreationTests(ContactData contact) throws Exception {
     Contacts before = app.contact().all();
     app.goTo().goToContactCreation();
-    File photo = new File(properties.getProperty("web.photo"));
     app.contact().create(contact,true);
     assertThat(app.contact().count(), equalTo(before.size()+1));
     Contacts after = app.contact().all();

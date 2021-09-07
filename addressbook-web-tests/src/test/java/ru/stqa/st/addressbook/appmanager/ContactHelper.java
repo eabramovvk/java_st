@@ -18,7 +18,7 @@ public class ContactHelper extends HelperBase {
 
 
     public void submitContactCreation() {
-        click(By.xpath("//div[@id='content']/form/input[21]"));
+        wd.findElement(By.name("submit")).click();
     }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
@@ -40,7 +40,7 @@ public class ContactHelper extends HelperBase {
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
-        click(By.linkText("home"));
+        wd.findElement(By.linkText("home page")).click();
     }
     public void selectContactById(int id) {
         wd.findElement((By.cssSelector("a[href*='edit.php?id=" + id + "']"))).click();
@@ -60,7 +60,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactModifications() {
-        click(By.name("update"));
+        click(By.xpath("(//input[@name='update'])[2]"));
     }
 
     public boolean isThereAContact() {
@@ -68,7 +68,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void create(ContactData contactData, boolean creation) {
-        fillContactForm (contactData, true);
+        fillContactForm (contactData, creation);
         submitContactCreation();
         contactCache = null;
         goToHomePage();
