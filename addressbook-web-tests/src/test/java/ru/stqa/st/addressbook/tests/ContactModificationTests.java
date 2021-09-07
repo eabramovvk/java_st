@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions() throws IOException {
         properties = new Properties();
         properties.load(new FileReader(new File(String.format("src/test/resources/local.properties"))));
-        if (app.contact().all().size() == 0){
+        if (app.db().contacts().size() == 0){
             app.goTo().goToContactCreation();
             app.contact().create(new ContactData().withFirstName(properties.getProperty("web.firstName")).withLastName(properties.getProperty("web.lastName")).withAddress(properties.getProperty("web.address")).withHomePhone(properties.getProperty("web.homephone")).withEmail(properties.getProperty("web.email")).withGroup(properties.getProperty("web.group")), true);
             app.contact().goToHomePage();
@@ -34,12 +34,13 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() throws IOException {
         properties = new Properties();
         properties.load(new FileReader(new File(String.format("src/test/resources/local.properties"))));
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData modifiedContact =  before.iterator().next();
         ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstName(properties.getProperty("web.firstName")).withLastName(properties.getProperty("web.lastName")).withAddress(properties.getProperty("web.address")).withHomePhone(properties.getProperty("web.homephone")).withEmail(properties.getProperty("web.email")).withGroup(properties.getProperty("web.group"));
+        app.contact().goToHomePage();
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
 }

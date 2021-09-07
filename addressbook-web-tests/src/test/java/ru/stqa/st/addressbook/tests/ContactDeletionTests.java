@@ -22,7 +22,7 @@ public class ContactDeletionTests extends TestBase{
     public void ensurePreconditions() throws IOException {
         properties = new Properties();
         properties.load(new FileReader(new File(String.format("src/test/resources/local.properties"))));
-        if (app.contact().all().size() == 0){
+        if (app.db().contacts().size() == 0){
             app.goTo().goToContactCreation();
             app.contact().create(new ContactData().withFirstName(properties.getProperty("web.firstName")).withLastName(properties.getProperty("web.lastName")).withAddress(properties.getProperty("web.address")).withHomePhone(properties.getProperty("web.homephone")).withEmail(properties.getProperty("web.email")).withGroup(properties.getProperty("web.group")), true);
             app.contact().goToHomePage();
@@ -33,11 +33,11 @@ public class ContactDeletionTests extends TestBase{
     @Test
     public void testContactDeletion(){
 
-        Contacts before = app.contact().all();
+        Contacts before = app.db().contacts();
         ContactData deletedContact = before.iterator().next();
         app.contact().delete(deletedContact);
         assertThat(app.contact().count(), equalTo(before.size()-1));
-        Contacts after = app.contact().all();
+        Contacts after = app.db().contacts();
         assertThat(after,equalTo(before.without(deletedContact)));
 
     }
