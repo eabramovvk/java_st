@@ -12,9 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     private final Properties properties;
-    WebDriver wd;
+    private WebDriver wd;
 
     private String browser;
+    private RegistrationHelper registrationHelper;
+
 
     public ApplicationManager(String browser)  {
         this.browser = browser;
@@ -38,7 +40,9 @@ public class ApplicationManager {
     }
 
     public void stop() {
-        wd.quit();
+        if (wd != null){
+            wd.quit();
+        }
     }
 
     public HttpSession newSession(){
@@ -47,5 +51,25 @@ public class ApplicationManager {
 
     public String getProperty(String key) {
         return properties.getProperty(key);
+    }
+    public RegistrationHelper registration() {
+        if (registrationHelper == null) {
+            registrationHelper = new RegistrationHelper(this);
+        }
+        return registrationHelper;
+    }
+
+    public WebDriver getDriver() {
+        if (wd == null){
+            if (browser.equals(BrowserType.CHROME)) {
+                wd = new ChromeDriver();
+            } else if (browser.equals(BrowserType.FIREFOX)){
+                wd = new FirefoxDriver();
+            }
+            wd.manage().timeouts().implicitlyWait(1,TimeUnit.SECONDS);
+            wd.get(properties.getProperty("web.baseUrl"));
+
+        }
+        return wd;
     }
 }
