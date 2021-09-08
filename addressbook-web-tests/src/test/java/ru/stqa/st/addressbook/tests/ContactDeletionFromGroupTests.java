@@ -63,7 +63,8 @@ public class ContactDeletionFromGroupTests extends TestBase {
             if (userChoiceAfter.getId() == userSelect.getId()) {
                 userAfter = userChoiceAfter;
             }
-            assertThat(userSelect.getGroups(), equalTo(userAfter.getGroups().without(groupSelect)));
         }
+        assertThat(userSelect.getGroups(), equalTo(userAfter.getGroups().without(groupSelect)));
+
     }
 }
