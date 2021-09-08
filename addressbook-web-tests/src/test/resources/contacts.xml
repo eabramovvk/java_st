@@ -4,14 +4,14 @@
     <lastname>Test 0</lastname>
     <address>TestCity 0</address>
     <email>test@test.ru</email>
-    <group>[none]</group>
+    <group>test 1</group>
   </contact>
   <contact>
     <firstname>TestFamily 1</firstname>
     <lastname>Test 1</lastname>
     <address>TestCity 1</address>
     <email>test@test.ru</email>
-    <group>[none]</group>
+    <group>test 2</group>
   </contact>
 
 </list>
