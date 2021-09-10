@@ -5,6 +5,11 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.mantis.appmanager.ApplicationManager;
 import java.io.File;
+import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
+import org.testng.SkipException;
+import javax.xml.rpc.ServiceException;
+import java.net.MalformedURLException;
+import java.rmi.RemoteException;
 
 
 public class TestBase {
@@ -25,5 +30,19 @@ public class TestBase {
         app.stop();
     }
 
+    public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+        if (isIssueOpen(issueId)) {
+            throw new SkipException("Ignored because of issue " + issueId);
+        }
+    }
+
+    private boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+        String status = app.soap().getIssueStatus(issueId);
+        System.out.println(status);
+        if(status.equals(("resolved"))){
+            return false;
+        }
+        return true;
+    }
 
 }
