@@ -32,8 +32,8 @@ public class ApplicationManager {
     }
 
     public void init() throws IOException {
-        String target = System.getProperty("target","local");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
+        String target = System.getProperty("target", "local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         dbHelper = new DbHelper();
 
         if ("".equals(properties.getProperty("selenium.server"))) {
@@ -47,15 +47,15 @@ public class ApplicationManager {
             capabilities.setBrowserName(browser);
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
 
-        wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        wd.get(properties.getProperty("web.baseUrl"));
-        groupHelper = new GroupHelper(wd);
-        navigationHelper = new NavigationHelper(wd);
-        sessionHelper = new SessionHelper(wd);
-        contactHelper = new ContactHelper(wd);
-        sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+            wd.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+            wd.get(properties.getProperty("web.baseUrl"));
+            groupHelper = new GroupHelper(wd);
+            navigationHelper = new NavigationHelper(wd);
+            sessionHelper = new SessionHelper(wd);
+            contactHelper = new ContactHelper(wd);
+            sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+        }
     }
-
 
     public void stop() {
         wd.quit();
